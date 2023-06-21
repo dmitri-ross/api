@@ -41,13 +41,13 @@ Response example:
 ## API Endpoints
 
 ## Table of Contents
-- [Company Methods](#company-operations)
-- [Token Methods](#token-operations)
-- [TGE Methods](#tge-operations)
-- [DAO Member Methods](#dao-member-operations)
-- [User Methods](#user-operations)
-- [Documents Methods](#documents-operations)
-- [Invoice Methods](#invoice-operations)
+- [Company Methods](#company-methods)
+- [Token Methods](#token-methods)
+- [TGE Methods](#tge-methods)
+- [DAO Member Methods](#dao-member-methods)
+- [User Methods](#user-methods)
+- [Documents Methods](#documents-methods)
+- [Invoice Methods](#invoice-methods)
 
 
 ### Company Methods
