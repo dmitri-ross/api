@@ -197,17 +197,6 @@ Response:
 }
 ```
 
-**GET /user/{userAddress}/balance**
-
-Used to get user's balance in Ether or Matic.
-
-Response:
-```json
-{
-  "balance": "<Balance>"
-}
-```
-
 ### Documents Operations
 **GET /pool/{poolAddress}/documents**
 
