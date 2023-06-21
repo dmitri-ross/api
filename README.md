@@ -13,6 +13,18 @@
 ## Private Endpoints
 
 ### Company Operations
+
+**GET /available-pools**
+
+Used to get available pools and their prices.
+
+Response:
+```json
+{
+  "pools": "<Array of Available Pools>"
+}
+```
+
 **POST /pool**
 
 Used to purchase a new pool. 
@@ -52,16 +64,6 @@ Response:
 }
 ```
 
-**GET /available-pools**
-
-Used to get available pools and their prices.
-
-Response:
-```json
-{
-  "pools": "<Array of Available Pools>"
-}
-```
 
 **GET /pool/{poolAddress}/events**
 
