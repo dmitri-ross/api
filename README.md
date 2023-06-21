@@ -1,16 +1,54 @@
-# CompanyDAO API Documentation
+# CompanyDAO.org API Documentation
+
+The base URL to connect to the API is `https://api.companydao.org`.
+
+## Authentication
+All API requests require authentication. You need to pass your API key in the Authorization header as a Bearer token. 
+
+```
+Authorization: Bearer <Your API Key>
+```
+
+## Networks
+CompanyDAO.org operates on two blockchain networks - Ethereum (ETH) and Polygon (Matic).
+
+## Blockchain Transactions
+Certain POST requests will produce blockchain transactions, which are relayed through our system. The relayer's balance must have enough funds to send transactions. To check the relayer's information, use the `getRelayerInfo` endpoint.
+
+```
+GET /relayer
+```
+Response:
+```json
+{
+  "address": "<Relayer Address>",
+  "balance": "<Relayer Balance>"
+}
+```
+
+For each POST request that produces a transaction, the response will include the transaction hash (`tx_hash`), the chain ID (`chainId`), and a URL to view the transaction on Etherscan (for Ethereum transactions) or Polygonscan (for Polygon transactions).
+
+Response example:
+```json
+{
+  "status": "success",
+  "tx_hash": "<Transaction Hash>",
+  "chainId": "<Chain ID>",
+  "explorerURL": "<URL to Etherscan/Polygonscan>"
+}
+```
+
+## API Endpoints
 
 ## Table of Contents
-- [Private Endpoints](#private-endpoints)
-  - [Company Methods](#company-operations)
-  - [Token Methods](#token-operations)
-  - [TGE Methods](#tge-operations)
-  - [DAO Member Methods](#dao-member-operations)
-  - [User Methods](#user-operations)
-  - [Documents Methods](#documents-operations)
-  - [Invoice Methods](#invoice-operations)
+- [Company Methods](#company-operations)
+- [Token Methods](#token-operations)
+- [TGE Methods](#tge-operations)
+- [DAO Member Methods](#dao-member-operations)
+- [User Methods](#user-operations)
+- [Documents Methods](#documents-operations)
+- [Invoice Methods](#invoice-operations)
 
-## Private Endpoints
 
 ### Company Methods
 
