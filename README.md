@@ -2,17 +2,17 @@
 
 ## Table of Contents
 - [Private Endpoints](#private-endpoints)
-  - [Company Operations](#company-operations)
-  - [Token Operations](#token-operations)
-  - [TGE Operations](#tge-operations)
-  - [DAO Member Operations](#dao-member-operations)
-  - [User Operations](#user-operations)
-  - [Documents Operations](#documents-operations)
-  - [Invoice Operations](#invoice-operations)
+  - [Company Methods](#company-operations)
+  - [Token Methods](#token-operations)
+  - [TGE Methods](#tge-operations)
+  - [DAO Member Methods](#dao-member-operations)
+  - [User Methods](#user-operations)
+  - [Documents Methods](#documents-operations)
+  - [Invoice Methods](#invoice-operations)
 
 ## Private Endpoints
 
-### Company Operations
+### Company Methods
 
 **GET /available-pools**
 
@@ -76,7 +76,7 @@ Response:
 }
 ```
 
-### Token Operations
+### Token Methods
 **GET /token/{tokenAddress}**
 
 Used to get token details.
@@ -99,7 +99,7 @@ Response:
 }
 ```
 
-### TGE Operations
+### TGE Methods
 **POST /token/{tokenAddress}/tge**
 
 Used to create a new TGE for a token.
@@ -128,7 +128,7 @@ Response:
 }
 ```
 
-### DAO Member Operations
+### DAO Member Methods
 **POST /pool/{poolAddress}/proposal**
 
 Used to create a new proposal.
@@ -185,7 +185,7 @@ Response:
 }
 ```
 
-### User Operations
+### User Methods
 **GET /user/{userAddress}**
 
 Used to get user details.
@@ -197,7 +197,7 @@ Response:
 }
 ```
 
-### Documents Operations
+### Documents Methods
 **GET /pool/{poolAddress}/documents**
 
 Used to get a list of all documents associated with the pool.
@@ -220,7 +220,7 @@ Response:
 }
 ```
 
-### Invoice Operations
+### Invoice Methods
 **POST /pool/{poolAddress}/invoice/on-chain**
 
 Used to create a new on-chain invoice.
