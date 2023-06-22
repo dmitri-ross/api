@@ -56,6 +56,7 @@ Response example:
 - [User Methods](#user-methods)
 - [Documents Methods](#documents-methods)
 - [Invoice Methods](#invoice-methods)
+- [Webhooks](#webhooks)
 
 
 ### Company Methods
@@ -322,3 +323,118 @@ Response:
   "invoiceInfo": "<Invoice Info>"
 }
 ```
+
+# Webhooks
+
+Webhooks are a way for CompanyDAO.org API to provide real-time information to other applications. They allow you to specify a URL to which we will send HTTP POST requests when certain events occur in the system.
+
+## Setting up Webhooks
+
+To set up a webhook, you need to provide the following information:
+
+- `url`: The URL to which the POST request will be sent when the event occurs. The URL must use HTTPS.
+- `events`: The list of events you want to subscribe to.
+
+Webhooks can be set up and managed via the following API endpoints:
+
+**POST /webhooks**
+
+Creates a new webhook.
+
+Request Body:
+```json
+{
+  "url": "<URL>",
+  "events": ["<Event1>", "<Event2>", ...]
+}
+```
+Response:
+```json
+{
+  "id": "<Webhook Id>"
+}
+```
+
+**GET /webhooks**
+
+Gets the list of all webhooks.
+
+Response:
+```json
+{
+  "data": ["<Array of Webhooks>"]
+}
+```
+
+**GET /webhooks/{webhookId}**
+
+Gets the details of a specific webhook.
+
+Response:
+```json
+{
+  "data": "<Webhook Info>"
+}
+```
+
+**DELETE /webhooks/{webhookId}**
+
+Deletes a specific webhook.
+
+Response:
+```json
+{
+  "status": "success"
+}
+```
+
+## Events
+
+The events that can trigger a webhook include:
+
+- `pool.purchased`: Triggered when a new pool is purchased.
+- `token.created`: Triggered when a new token is created.
+- `tge.created`: Triggered when a new TGE is created.
+- `proposal.created`: Triggered when a new proposal is created.
+- `vote.cast`: Triggered when a vote is cast on a proposal.
+- `invoice.created.onchain`: Triggered when a new on-chain invoice is created.
+- `invoice.created.offchain`: Triggered when a new off-chain invoice is created.
+- `invoice.paid`: Triggered when an invoice is marked as paid.
+
+When an event occurs, we'll send a POST request to your specified URL with a JSON payload. The payload will include `type`, `data` and `id`.
+
+For example, the payload for a `pool.purchased` event might look like this:
+
+```json
+{
+  "type": "pool.purchased",
+  "data": {
+      "object": "<Pool Info>"
+  },
+  "id": "<Webhook Event ID>"
+}
+```
+
+Please note, for security reasons, you should verify the POST requests are coming from CompanyDAO.org. 
+
+## Event Retry
+
+If the HTTP POST request fails, CompanyDAO.org will attempt to resend the notification periodically for up to 72 hours. 
+
+## Webhook Signing
+
+To ensure that the webhook requests are indeed coming from CompanyDAO.org, we sign the requests. The signature is included in the header `X-CDAO-Signature`. Your application should verify this signature before processing the request.
+
+## Event Types
+
+Here is a list of event types that can be sent via webhook. 
+
+- `pool.purchased`
+- `token.created`
+- `tge.created`
+- `proposal.created`
+- `vote.cast`
+- `invoice.created.onchain`
+- `invoice.created.offchain`
+- `invoice.paid`
+
