@@ -20,10 +20,18 @@ GET /relayer
 ```
 Response:
 ```json
-{
-  "address": "<Relayer Address>",
-  "balance": "<Relayer Balance>"
-}
+[
+  {
+    "address": "<Relayer Address on Chain 1>",
+    "balance": "<Relayer Balance on Chain 1>",
+    "chainId": "<Chain ID 1>"
+  },
+  {
+    "address": "<Relayer Address on Chain 2>",
+    "balance": "<Relayer Balance on Chain 2>",
+    "chainId": "<Chain ID 2>"
+  }
+]
 ```
 
 For each POST request that produces a transaction, the response will include the transaction hash (`tx_hash`), the chain ID (`chainId`), and a URL to view the transaction on Etherscan (for Ethereum transactions) or Polygonscan (for Polygon transactions).
